@@ -1,0 +1,16 @@
+Library/
+Temp/
+Builds/
+Logs/
+UserSettings/
+
+*.obj
+*.pdb
+*.sln
+*.csproj
+*.suo
+*.user
+*.pidb
+
+.vs/
+.vsconfig
