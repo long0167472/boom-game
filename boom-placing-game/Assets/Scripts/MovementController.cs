@@ -7,13 +7,11 @@ public class MovementController : MonoBehaviour
     public float speed = 5f;
 
 
-    [Header("Input")]
     public KeyCode inputUp = KeyCode.W;
     public KeyCode inputDown = KeyCode.S;
     public KeyCode inputLeft = KeyCode.A;
     public KeyCode inputRight = KeyCode.D;
 
-    //[Header("Sprites")]
     public AnimatedSpriteRenderer spriteRendererUp;
     public AnimatedSpriteRenderer spriteRendererDown;
     public AnimatedSpriteRenderer spriteRendererLeft;
@@ -29,26 +27,45 @@ public class MovementController : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Update calling...");
-        if (Input.GetKey(inputUp)) {
-            Debug.Log("up");
+        //if (Input.GetKey(inputUp)) {
+        //    SetDirection(Vector2.up, spriteRendererUp);
+        //} else if (Input.GetKey(inputDown)) {
+        //    SetDirection(Vector2.down, spriteRendererDown);
+        //} else if (Input.GetKey(inputLeft)) {
+        //    SetDirection(Vector2.left, spriteRendererLeft);
+        //} else if (Input.GetKey(inputRight)) {
+        //    SetDirection(Vector2.right, spriteRendererRight);
+        //} else {
+        //    if (direction != Vector2.zero)
+        //    {
+        //        SetDirection(Vector2.zero, spriteRendererDown);
+        //    }
+        //}
+
+        if (Input.GetKey(inputUp))
+        {
             SetDirection(Vector2.up, spriteRendererUp);
-        } else if (Input.GetKey(inputDown)) {
-            Debug.Log("down");
-            //SetDirection(Vector2.down);
+            return;
+        }
+        if (Input.GetKey(inputDown))
+        {
             SetDirection(Vector2.down, spriteRendererDown);
-        } else if (Input.GetKey(inputLeft)) {
-            Debug.Log("left");
-            //SetDirection(Vector2.left);
+            return;
+        }
+        if (Input.GetKey(inputLeft))
+        {
             SetDirection(Vector2.left, spriteRendererLeft);
-        } else if (Input.GetKey(inputRight)) {
-            Debug.Log("right");
-            //SetDirection(Vector2.right);
+            return;
+        }
+        if (Input.GetKey(inputRight))
+        {
             SetDirection(Vector2.right, spriteRendererRight);
-        } else {
-            Debug.Log("zero");
-            //SetDirection(Vector2.zero);
-            SetDirection(Vector2.zero, activeSpriteRenderer);
+            return;
+        }
+        if (direction != Vector2.zero)
+        {
+            SetDirection(Vector2.zero, spriteRendererDown);
+            return;
         }
     }
 

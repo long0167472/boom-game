@@ -15,7 +15,6 @@ public class AnimatedSpriteRenderer : MonoBehaviour
     public bool loop = true;
     public bool idle = true;
 
-
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -52,9 +51,5 @@ public class AnimatedSpriteRenderer : MonoBehaviour
         {
             spriteRenderer.sprite = animationSprites[animationFrame];
         }
-
-
-
     }
-
 }
