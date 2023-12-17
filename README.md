@@ -30,6 +30,16 @@ Chào mừng bạn đến với dự án của Nhóm 09! Dưới đây là mô t
 ### 3. Hướng Dẫn Cơ Bản
 
 1. **Di Chuyển:** Sử dụng các phím mũi tên hoặc WASD để di chuyển nhân vật.
-2. **Đặt Bom:** Sử dụng phím Space để đặt bom tại vị trí hiện tại của nhân vật.
-3. **Nổ Tường:** Sử dụng bom tại vị trí của tường để tạo ra lối đi mới.
-4. **Nhặt Item:** Duyệt qua item và sử dụng phím tương ứng để nhặt.
+   - **Nhân vật 1:**
+     - A: đi sang trái
+     - D: đi sang phải
+     - S: đi xuống
+     - W: đi lên
+   - **Nhân vật 2:**
+     - Arrow Left: đi lên
+     - Arrow Right: sang phải
+     - Arrow Down: đi xuống
+     - Arrow Up: đi lên
+3. **Đặt Bom:** Sử dụng phím Left Shift để đặt bom tại vị trí hiện tại của nhân vật 1 hoặc Right Shift cho nhân vật 2.
+4. **Nổ Tường:** Sử dụng bom tại vị trí của tường để tạo ra lối đi mới.
+5. **Nhặt Item:** Duyệt qua item và sử dụng phím tương ứng để nhặt.
