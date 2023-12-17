@@ -3,6 +3,7 @@ Temp/
 Builds/
 Logs/
 UserSettings/
+Build/
 
 *.obj
 *.pdb
@@ -11,6 +12,7 @@ UserSettings/
 *.suo
 *.user
 *.pidb
+*.cache
 
 .vs/
 .vsconfig

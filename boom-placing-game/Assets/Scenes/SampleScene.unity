@@ -1496,7 +1496,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1268278076}
   m_Layer: 0
-  m_Name: Exploition
+  m_Name: Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3483,7 +3483,7 @@ Transform:
   m_GameObject: {fileID: 1929153189}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.49337, y: 2.87, z: 0}
+  m_LocalPosition: {x: -5.01, y: 2.87, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3593,6 +3593,11 @@ MonoBehaviour:
   inputKey: 304
   bombFuseTime: 3
   bombAmount: 2
+  explosionLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  explosionDuration: 1
+  explosionRadius: 1
 --- !u!1 &2048569650
 GameObject:
   m_ObjectHideFlags: 0
