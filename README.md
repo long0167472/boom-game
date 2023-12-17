@@ -1,4 +1,5 @@
 # README - Nhóm 09: Game Đặt Boom
+## LINK DEMO: https://simmer.io/@duogglong/boom-placing-game
 
 Chào mừng bạn đến với dự án của Nhóm 09! Dưới đây là mô tả và hướng dẫn cơ bản về game đặt bom mà chúng tôi đang phát triển.
 
