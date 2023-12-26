@@ -77,11 +77,11 @@ public class BombController : MonoBehaviour
         position += direction;
         Debug.Log("Log 2: " + position);
 
-        //if (Physics2D.OverlapBox(position, Vector2.one / 2f, 0f, explosionLayerMask))
-        //{
-        //    ClearDestructible(position);
-        //    return;
-        //}
+        if (Physics2D.OverlapBox(position, Vector2.one / 2f, 0f, explosionLayerMask))
+        {
+            //ClearDestructible(position);
+            return;
+        }
 
         Explosion explosion = Instantiate(explosionPrefab, position, Quaternion.identity);
         Debug.Log(length);
