@@ -96,13 +96,16 @@ public class BombController : MonoBehaviour
 
     private void ClearDestructible(Vector2 position)
     {
-       Vector3Int cell = destructibleTiles.WorldToCell(position);
-       TileBase tile = destructibleTiles.GetTile(cell);
-
-       if (tile != null)
+       if (destructibleTiles != null)
        {
-           Instantiate(destructiblePrefab, position, Quaternion.identity);
-           destructibleTiles.SetTile(cell, null);
+            Vector3Int cell = destructibleTiles.WorldToCell(position);
+            TileBase tile = destructibleTiles.GetTile(cell);
+
+            if (tile != null)
+            {
+                Instantiate(destructiblePrefab, position, Quaternion.identity);
+                destructibleTiles.SetTile(cell, null);
+            }
        }
     }
 
