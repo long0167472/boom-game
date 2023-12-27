@@ -85,7 +85,6 @@ public class BombController : MonoBehaviour
 
         Explosion explosion = Instantiate(explosionPrefab, position, Quaternion.identity);
         Debug.Log(length);
-        Debug.Log(1 > 1 );
         explosion.SetActiveRenderer(length > 1 ? explosion.middle : explosion.end);
         //explosion.SetActiveRenderer(explosion.end);
         explosion.SetDirection(direction);
@@ -109,4 +108,11 @@ public class BombController : MonoBehaviour
        }
     }
 
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Bomb"))
+        {
+            other.isTrigger = false;
+        }
+    }
 }

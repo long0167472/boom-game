@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,14 +13,19 @@ public class PlayerController : MonoBehaviour
     public KeyCode inputDown = KeyCode.S;
     public KeyCode inputLeft = KeyCode.A;
     public KeyCode inputRight = KeyCode.D;
-
+    
+    //Player General
     public AnimatedSpriteRenderer spriteRendererUp;
     public AnimatedSpriteRenderer spriteRendererDown;
     public AnimatedSpriteRenderer spriteRendererLeft;
     public AnimatedSpriteRenderer spriteRendererRight;
     public AnimatedSpriteRenderer spriteRendererDeath;
-    public AnimatedSpriteRenderer spriteRendererTakeDamage;
     private AnimatedSpriteRenderer activeSpriteRenderer;
+
+    //Byte scene
+    public AnimatedSpriteRenderer spriteRendererTakeDamage;
+
+    private string sceneName;
 
     // Player settings
     public int heartCount = 3;
@@ -27,6 +33,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        sceneName = SceneManager.GetActiveScene().name;
         rigidbody = GetComponent<Rigidbody2D>();
         activeSpriteRenderer = spriteRendererDown;
     }
@@ -107,7 +114,11 @@ public class PlayerController : MonoBehaviour
         spriteRendererLeft.enabled = false;
         spriteRendererRight.enabled = false;
         spriteRendererDeath.enabled = false;
-        spriteRendererTakeDamage.enabled = false;
+
+        if (SceneConst.SCENE_HAS_ITEMS.Equals(sceneName))
+        {
+            spriteRendererTakeDamage.enabled = false;
+        }
 
         // lock heart
         isEvening = true;
@@ -115,14 +126,17 @@ public class PlayerController : MonoBehaviour
 
         heartCount--;
         Debug.Log("Blood: " + heartCount);
-        Debug.Log("Blood: " + (heartCount == 0));
-        if (heartCount == 0)
+        Debug.Log("Blood: " + (heartCount <= 0));
+        if (heartCount <= 0)
         {
             spriteRendererDeath.enabled = true;
             Invoke(nameof(OnPlayerDeath), 1.25f);
         } else
         {
-            spriteRendererTakeDamage.enabled = true;
+            if (SceneConst.SCENE_HAS_ITEMS.Equals(sceneName))
+            {
+                spriteRendererTakeDamage.enabled = true;
+            }
             Invoke(nameof(AfterSubtractBlood), 1f);
         }
     }
@@ -131,14 +145,17 @@ public class PlayerController : MonoBehaviour
     {
         gameObject.SetActive(true);
         spriteRendererDown.enabled = true;
-        spriteRendererTakeDamage.enabled = false;
+        if (SceneConst.SCENE_HAS_ITEMS.Equals(sceneName))
+        {
+            spriteRendererTakeDamage.enabled = false;
+        }
     }
 
     private void OnPlayerDeath()
     {
         gameObject.SetActive(false);
         GetComponent<BombController>().enabled = false;
-        FindObjectOfType<GameManager>().CheckWinState();
+        //FindObjectOfType<GameManager>().CheckWinState();
     }
 
     IEnumerator ResetIsEveningChange()
