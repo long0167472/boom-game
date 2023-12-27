@@ -17,7 +17,7 @@ public class BombController : MonoBehaviour
     public Explosion explosionPrefab;
     public LayerMask explosionLayerMask;
     public float explosionDuration = 1f;
-    public const int explosionRadius = 1;
+    public int explosionRadius = 1;
 
     [Header("Destructible")]
     public Tilemap destructibleTiles;
