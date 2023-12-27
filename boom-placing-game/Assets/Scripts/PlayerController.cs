@@ -18,10 +18,11 @@ public class PlayerController : MonoBehaviour
     public AnimatedSpriteRenderer spriteRendererLeft;
     public AnimatedSpriteRenderer spriteRendererRight;
     public AnimatedSpriteRenderer spriteRendererDeath;
+    public AnimatedSpriteRenderer spriteRendererTakeDamage;
     private AnimatedSpriteRenderer activeSpriteRenderer;
 
     // Player settings
-    private int heartCount = 3;
+    public int heartCount = 3;
     private bool isEvening = false;
 
     private void Awake()
@@ -105,7 +106,8 @@ public class PlayerController : MonoBehaviour
         spriteRendererDown.enabled = false;
         spriteRendererLeft.enabled = false;
         spriteRendererRight.enabled = false;
-        spriteRendererDeath.enabled = true;
+        spriteRendererDeath.enabled = false;
+        spriteRendererTakeDamage.enabled = false;
 
         // lock heart
         isEvening = true;
@@ -116,9 +118,11 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Blood: " + (heartCount == 0));
         if (heartCount == 0)
         {
+            spriteRendererDeath.enabled = true;
             Invoke(nameof(OnPlayerDeath), 1.25f);
         } else
         {
+            spriteRendererTakeDamage.enabled = true;
             Invoke(nameof(AfterSubtractBlood), 1f);
         }
     }
@@ -127,18 +131,30 @@ public class PlayerController : MonoBehaviour
     {
         gameObject.SetActive(true);
         spriteRendererDown.enabled = true;
-        spriteRendererDeath.enabled = false;
+        spriteRendererTakeDamage.enabled = false;
     }
 
     private void OnPlayerDeath()
     {
         gameObject.SetActive(false);
         GetComponent<BombController>().enabled = false;
+        FindObjectOfType<GameManager>().CheckWinState();
     }
 
     IEnumerator ResetIsEveningChange()
     {
         yield return new WaitForSeconds(1.0f);
         isEvening = false;
+    }
+    public void AddHeart()
+    {
+        if (heartCount == 3)
+        {
+            return;
+        }else
+        {
+            heartCount++;
+        }
+        Debug.Log("Blood: " + heartCount);
     }
 }
