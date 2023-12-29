@@ -17,11 +17,11 @@ public class BombController : MonoBehaviour
     public Explosion explosionPrefab;
     public LayerMask explosionLayerMask;
     public float explosionDuration = 1f;
-    public const int explosionRadius = 2;
+    public int explosionRadius = 1;
 
-    //[Header("Destructible")]
-    //public Tilemap destructibleTiles;
-    //public Destructible destructiblePrefab;
+    [Header("Destructible")]
+    public Tilemap destructibleTiles;
+    public Destructible destructiblePrefab;
 
     private void OnEnable()
     {
@@ -79,13 +79,12 @@ public class BombController : MonoBehaviour
 
         if (Physics2D.OverlapBox(position, Vector2.one / 2f, 0f, explosionLayerMask))
         {
-            //ClearDestructible(position);
-            return;
+           ClearDestructible(position);
+           return;
         }
 
         Explosion explosion = Instantiate(explosionPrefab, position, Quaternion.identity);
         Debug.Log(length);
-        Debug.Log(1 > 1 );
         explosion.SetActiveRenderer(length > 1 ? explosion.middle : explosion.end);
         //explosion.SetActiveRenderer(explosion.end);
         explosion.SetDirection(direction);
@@ -94,16 +93,26 @@ public class BombController : MonoBehaviour
         Explode(position, direction, length - 1);
     }
 
-    //private void ClearDestructible(Vector2 position)
-    //{
-    //    Vector3Int cell = destructibleTiles.WorldToCell(position);
-    //    TileBase tile = destructibleTiles.GetTile(cell);
+    private void ClearDestructible(Vector2 position)
+    {
+       if (destructibleTiles != null)
+       {
+            Vector3Int cell = destructibleTiles.WorldToCell(position);
+            TileBase tile = destructibleTiles.GetTile(cell);
 
-    //    if (tile != null)
-    //    {
-    //        Instantiate(destructiblePrefab, position, Quaternion.identity);
-    //        destructibleTiles.SetTile(cell, null);
-    //    }
-    //}
+            if (tile != null)
+            {
+                Instantiate(destructiblePrefab, position, Quaternion.identity);
+                destructibleTiles.SetTile(cell, null);
+            }
+       }
+    }
 
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Bomb"))
+        {
+            other.isTrigger = false;
+        }
+    }
 }
