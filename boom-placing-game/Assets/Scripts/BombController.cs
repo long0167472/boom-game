@@ -17,7 +17,7 @@ public class BombController : MonoBehaviour
     public Explosion explosionPrefab;
     public LayerMask explosionLayerMask;
     public float explosionDuration = 1f;
-    public const int explosionRadius = 1;
+    public int explosionRadius = 1;
 
     [Header("Destructible")]
     public Tilemap destructibleTiles;
@@ -85,7 +85,6 @@ public class BombController : MonoBehaviour
 
         Explosion explosion = Instantiate(explosionPrefab, position, Quaternion.identity);
         Debug.Log(length);
-        Debug.Log(1 > 1 );
         explosion.SetActiveRenderer(length > 1 ? explosion.middle : explosion.end);
         //explosion.SetActiveRenderer(explosion.end);
         explosion.SetDirection(direction);
@@ -96,14 +95,24 @@ public class BombController : MonoBehaviour
 
     private void ClearDestructible(Vector2 position)
     {
-       Vector3Int cell = destructibleTiles.WorldToCell(position);
-       TileBase tile = destructibleTiles.GetTile(cell);
-
-       if (tile != null)
+       if (destructibleTiles != null)
        {
-           Instantiate(destructiblePrefab, position, Quaternion.identity);
-           destructibleTiles.SetTile(cell, null);
+            Vector3Int cell = destructibleTiles.WorldToCell(position);
+            TileBase tile = destructibleTiles.GetTile(cell);
+
+            if (tile != null)
+            {
+                Instantiate(destructiblePrefab, position, Quaternion.identity);
+                destructibleTiles.SetTile(cell, null);
+            }
        }
     }
 
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Bomb"))
+        {
+            other.isTrigger = false;
+        }
+    }
 }
