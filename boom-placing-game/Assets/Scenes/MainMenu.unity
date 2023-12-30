@@ -764,7 +764,7 @@ GameObject:
   - component: {fileID: 341972016}
   - component: {fileID: 341972015}
   m_Layer: 5
-  m_Name: Single player controlsTxt
+  m_Name: SingleClayerControlsTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2870,7 +2870,7 @@ GameObject:
   - component: {fileID: 2010376896}
   - component: {fileID: 2010376895}
   m_Layer: 5
-  m_Name: 2 players controlsTxt
+  m_Name: 2PlayersControlsTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
