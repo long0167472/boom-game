@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public new Rigidbody2D rigidbody {get; private set;}
+    public new Rigidbody2D rigidbody { get; private set; }
     private Vector2 direction = Vector2.down;
     public float speed = 5f;
 
@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public KeyCode inputDown = KeyCode.S;
     public KeyCode inputLeft = KeyCode.A;
     public KeyCode inputRight = KeyCode.D;
-    
+
     //Player General
     public AnimatedSpriteRenderer spriteRendererUp;
     public AnimatedSpriteRenderer spriteRendererDown;
@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        
+
         if (Input.GetKey(inputUp))
         {
             SetDirection(Vector2.up, spriteRendererUp);
@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!isEvening) 
+        if (!isEvening)
         {
             Vector2 position = rigidbody.position;
             Vector2 translation = direction * speed * Time.fixedDeltaTime;
@@ -131,7 +131,8 @@ public class PlayerController : MonoBehaviour
         {
             spriteRendererDeath.enabled = true;
             Invoke(nameof(OnPlayerDeath), 1.25f);
-        } else
+        }
+        else
         {
             if (SceneConst.SCENE_HAS_ITEMS.Equals(sceneName))
             {
@@ -168,7 +169,8 @@ public class PlayerController : MonoBehaviour
         if (heartCount == 3)
         {
             return;
-        }else
+        }
+        else
         {
             heartCount++;
         }
