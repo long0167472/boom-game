@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHealthController : MonoBehaviour
+public class HealthPlayerController : MonoBehaviour
 {
     //public int numOfHearts = 3;
 

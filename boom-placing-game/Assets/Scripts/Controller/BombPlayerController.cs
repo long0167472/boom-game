@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class PlayerBombController : MonoBehaviour
+public class BombPlayerController : MonoBehaviour
 {
     //Player General
     public AnimatedSpriteRenderer spriteRendererUp;
@@ -21,12 +21,12 @@ public class PlayerBombController : MonoBehaviour
 
     private int getCurrentHeart()
     {
-        return GetComponent<PlayerHealthController>().heartCount;
+        return GetComponent<HealthPlayerController>().heartCount;
     }
 
     private void minusHeart()
     {
-        GetComponent<PlayerHealthController>().minusHeart();
+        GetComponent<HealthPlayerController>().minusHeart();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -89,7 +89,7 @@ public class PlayerBombController : MonoBehaviour
 
     private void OnEveningMovementController(bool isEvening)
     {
-        PlayerMovementController movementScript = GetComponent<PlayerMovementController>();
+        MovementPlayerController movementScript = GetComponent<MovementPlayerController>();
         movementScript.isEvening = isEvening;
     }
 }
