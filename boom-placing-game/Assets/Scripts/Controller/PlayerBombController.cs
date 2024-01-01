@@ -11,7 +11,7 @@ public class PlayerBombController : MonoBehaviour
     public AnimatedSpriteRenderer spriteRendererDeath;
 
     // Player settings
-    private int heartCount = 30;
+    public int heartCount = 3;
     private bool isEvening = false;
 
     private void Awake()
