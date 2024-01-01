@@ -2161,7 +2161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bombPrefab: {fileID: 490456275313906377, guid: 4ea4333073fdd9a4585ebd828152af16, type: 3}
-  inputKey: 271
+  inputKey: 108
   bombFuseTime: 3
   bombAmount: 3
   explosionPrefab: {fileID: 8487874408466572901, guid: 667ac78a6b027914c84b15f3c942dd46, type: 3}
