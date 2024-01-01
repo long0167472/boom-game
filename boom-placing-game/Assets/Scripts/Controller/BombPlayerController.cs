@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class PlayerBombController : MonoBehaviour
+public class BombPlayerController : MonoBehaviour
 {
     //Player General
     public AnimatedSpriteRenderer spriteRendererUp;
@@ -11,7 +11,7 @@ public class PlayerBombController : MonoBehaviour
     public AnimatedSpriteRenderer spriteRendererDeath;
 
     // Player settings
-    public int heartCount = 3;
+    //private int heartCount;
     private bool isEvening = false;
 
     private void Awake()
@@ -19,7 +19,17 @@ public class PlayerBombController : MonoBehaviour
         Debug.Log("Instance PlayerBombController is creating...");
     }
 
-     private void OnTriggerEnter2D(Collider2D other)
+    private int getCurrentHeart()
+    {
+        return GetComponent<HealthPlayerController>().heartCount;
+    }
+
+    private void minusHeart()
+    {
+        GetComponent<HealthPlayerController>().minusHeart();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
      {
         if (other.gameObject.layer == LayerMask.NameToLayer("Explosion"))
         {
@@ -45,10 +55,10 @@ public class PlayerBombController : MonoBehaviour
 
         StartCoroutine(ResetIsEveningChange());
 
-        heartCount--;
-        Debug.Log("Blood: " + heartCount);
-        Debug.Log("Blood: " + (heartCount <= 0));
-        if (heartCount <= 0)
+        minusHeart();
+        Debug.Log("Blood: " + getCurrentHeart());
+        Debug.Log("Blood: " + (getCurrentHeart() <= 0));
+        if (getCurrentHeart() <= 0)
         {
             Invoke(nameof(OnPlayerDeath), 1.25f);
         }
@@ -79,7 +89,7 @@ public class PlayerBombController : MonoBehaviour
 
     private void OnEveningMovementController(bool isEvening)
     {
-        PlayerMovementController movementScript = GetComponent<PlayerMovementController>();
+        MovementPlayerController movementScript = GetComponent<MovementPlayerController>();
         movementScript.isEvening = isEvening;
     }
 }
