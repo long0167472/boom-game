@@ -34,5 +34,21 @@ public class HealthPlayerController : MonoBehaviour
             isChangeHeart = false;
         }
     }
-
+    public void AddHeart()
+    {
+        if (heartCount == 3)
+        {
+            return;
+        }
+        else if (heartCount == 2)
+        {
+            heartCount++;
+            hearts[2].enabled = true;
+        }
+        else if (heartCount == 1)
+        {
+            heartCount++;
+            hearts[1].enabled = true;
+        }
+    }
 }
