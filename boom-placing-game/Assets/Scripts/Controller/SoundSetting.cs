@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class SoundSetting : MonoBehaviour
 {
-    // private AudioSource audioSource;
-    // public void SoundOn()
-    // {
-    //     audioSource = GetComponent<AudioSource>();
-    //     audioSource.Play();
-    // }
     public void SoundOn(GameObject obj)
     {
         obj.GetComponent<AudioSource>().enabled = true;

@@ -19,12 +19,16 @@ public class MoveAudioController : MonoBehaviour
             return;
         }
         else{
-            if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+            bool player1 = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D);
+            bool player2 = Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow);
+            if(player1 || player2)
             {
-                audioSource.Play();
+                if(!audioSource.isPlaying)
+                {
+                    audioSource.Play();
+                }
             }
-            if(Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.D))
-            {
+            else{
                 audioSource.Stop();
             }
         }
