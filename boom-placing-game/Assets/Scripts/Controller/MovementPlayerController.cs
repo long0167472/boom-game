@@ -29,30 +29,33 @@ public class MovementPlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(inputUp))
+        if(!Pause.isPaused)
         {
-            SetDirection(Vector2.up, spriteRendererUp);
-            return;
-        }
-        if (Input.GetKey(inputDown))
-        {
-            SetDirection(Vector2.down, spriteRendererDown);
-            return;
-        }
-        if (Input.GetKey(inputLeft))
-        {
-            SetDirection(Vector2.left, spriteRendererLeft);
-            return;
-        }
-        if (Input.GetKey(inputRight))
-        {
-            SetDirection(Vector2.right, spriteRendererRight);
-            return;
-        }
-        if (direction != Vector2.zero)
-        {
-            SetDirection(Vector2.zero, spriteRendererDown);
-            return;
+            if (Input.GetKey(inputUp))
+            {
+                SetDirection(Vector2.up, spriteRendererUp);
+                return;
+            }
+            if (Input.GetKey(inputDown))
+            {
+                SetDirection(Vector2.down, spriteRendererDown);
+                return;
+            }
+            if (Input.GetKey(inputLeft))
+            {
+                SetDirection(Vector2.left, spriteRendererLeft);
+                return;
+            }
+            if (Input.GetKey(inputRight))
+            {
+                SetDirection(Vector2.right, spriteRendererRight);
+                return;
+            }
+            if (direction != Vector2.zero)
+            {
+                SetDirection(Vector2.zero, spriteRendererDown);
+                return;
+            }
         }
     }
 
@@ -60,10 +63,16 @@ public class MovementPlayerController : MonoBehaviour
     {
         if (!isEvening)
         {
+            if(!Pause.isPaused)
+            {
             Vector2 position = rigidbody.position;
             Vector2 translation = direction * speed * Time.fixedDeltaTime;
 
             rigidbody.MovePosition(position + translation);
+            }
+            else{
+                return;
+            }
         }
     }
 

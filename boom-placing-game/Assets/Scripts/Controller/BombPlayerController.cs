@@ -78,6 +78,7 @@ public class BombPlayerController : MonoBehaviour
     {
         gameObject.SetActive(false);
         GetComponent<BombController>().enabled = false;
+        FindObjectOfType<Win>().CheckWin();
     }
 
     IEnumerator ResetIsEveningChange()

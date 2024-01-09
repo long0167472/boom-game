@@ -23,9 +23,12 @@ public class MoveAudioController : MonoBehaviour
             bool player2 = Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow);
             if(player1 || player2)
             {
-                if(!audioSource.isPlaying)
+                if(!Pause.isPaused)
                 {
-                    audioSource.Play();
+                    if(!audioSource.isPlaying)
+                    {
+                        audioSource.Play();
+                    }
                 }
             }
             else{
