@@ -9,7 +9,7 @@ Chào mừng bạn đến với dự án của Nhóm 09! Dưới đây là mô t
 
 **Nhóm 09 Thành Viên:**
 - Cao Bá Lợi
-- Nguyễn Dương Long
+- Nguyễn Dương Long *
 - Phạm Thành Long
 - Ngô Văn Lương
 
@@ -18,6 +18,7 @@ Chào mừng bạn đến với dự án của Nhóm 09! Dưới đây là mô t
 ### 1. Mục Tiêu
 
 **Game đặt bom** là một trò chơi nhân vật đặt bom, nơi người chơi sẽ chiến đấu với nhau trong một môi trường đa người chơi. Mục tiêu chính là sống sót và loại bỏ đối thủ bằng cách sử dụng bom và các chiến thuật khác.
+- Chú ý: tắt unikey VN trước khi chơi để có trải nghiệm tốt hơn
 
 ### 2. Đặc Điểm
 
@@ -40,6 +41,6 @@ Chào mừng bạn đến với dự án của Nhóm 09! Dưới đây là mô t
      - Arrow Right: sang phải
      - Arrow Down: đi xuống
      - Arrow Up: đi lên
-3. **Đặt Bom:** Sử dụng phím Left Shift để đặt bom tại vị trí hiện tại của nhân vật 1 hoặc Right Shift cho nhân vật 2.
+3. **Đặt Bom:** Sử dụng phím Space để đặt bom tại vị trí hiện tại của nhân vật 1 hoặc l cho nhân vật 2.
 4. **Nổ Tường:** Sử dụng bom tại vị trí của tường để tạo ra lối đi mới.
 5. **Nhặt Item:** Duyệt qua item và sử dụng phím tương ứng để nhặt.
