@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Win : MonoBehaviour
 {
     public GameObject WinScreen;
+    public GameObject Menu;
     public GameObject player1;
     public Image icPlayer1;
     public GameObject player2;
@@ -14,6 +15,7 @@ public class Win : MonoBehaviour
     public void CheckWin()
     {
         WinScreen.SetActive(true);
+        Menu.SetActive(false);
         if (player1.activeSelf == false && player2.activeSelf == true)
         {
             icPlayer1.enabled = false;
