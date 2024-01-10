@@ -32,7 +32,14 @@ public class BombController : MonoBehaviour
     {
         if (bombsRemaining > 0 && Input.GetKeyDown(inputKey))
         {
-            StartCoroutine(PlaceBomb());
+            if(!Pause.isPaused)
+            {
+                StartCoroutine(PlaceBomb());
+            }
+            else
+            {
+                return;
+            }
         }
     }
 

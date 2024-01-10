@@ -16,7 +16,7 @@ public class ItemPickup : MonoBehaviour
         switch (type)
         {
             case ItemType.Heart:
-                player.GetComponent<PlayerController>().AddHeart();
+                player.GetComponent<HealthPlayerController>().AddHeart();
                 break;
             case ItemType.BlastRadius:
                 player.GetComponent<BombController>().explosionRadius++;
